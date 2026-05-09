@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { finalResultRows } from '../data/poafResults';
-import { TbTrophy } from 'react-icons/tb';
-import { HiOutlineSparkles } from 'react-icons/hi';
+import { TbTrophy, TbX, TbChartLine, TbChartBar, TbZoomQuestion } from 'react-icons/tb';
 
 const headers = [
   { key: 'metric', label: '지표' },
@@ -9,7 +9,52 @@ const headers = [
   { key: 'randomForest', label: 'RandomForest' },
 ];
 
+const BASE = process.env.PUBLIC_URL || '';
+
+const CHARTS = [
+  { icon: <TbChartLine size={22} />, title: 'Optuna 탐색 히스토리', sub: 'OOF AUROC', src: `${BASE}/optuna_history.png`, color: '#60a5fa' },
+  { icon: <TbChartBar size={22} />, title: '이상치 분포', sub: 'POAF별 박스플롯', src: `${BASE}/boxplot.png`, color: '#f472b6' },
+  { icon: <TbZoomQuestion size={22} />, title: 'SHAP Feature Importance', sub: '3개 모델 비교', src: `${BASE}/shap_importance.png`, color: '#34d399' },
+];
+
+function Modal({ chart, onClose }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-5xl rounded-3xl overflow-hidden"
+        style={{ border: `1px solid ${chart.color}44` }}
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4"
+          style={{ background: 'rgba(20,20,30,0.95)' }}>
+          <div className="flex items-center gap-3">
+            <span style={{ color: chart.color }}>{chart.icon}</span>
+            <div>
+              <div className="font-bold text-white">{chart.title}</div>
+              <div className="text-base" style={{ color: chart.color }}>{chart.sub}</div>
+            </div>
+          </div>
+          <button onClick={onClose}
+            className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
+            style={{ background: 'rgba(255,255,255,0.08)' }}>
+            <TbX size={18} className="text-slate-300" />
+          </button>
+        </div>
+        <div style={{ background: '#fff', maxHeight: '75vh', overflowY: 'auto' }}>
+          <img src={chart.src} alt={chart.title} className="w-full h-auto block" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FinalResultSection() {
+  const [active, setActive] = useState(null);
+
   return (
     <section id="final-result" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -27,6 +72,7 @@ export default function FinalResultSection() {
             Optuna 튜닝 기반 3개 모델의 테스트셋 성능을 비교합니다
           </p>
         </div>
+
         <div className="glass rounded-[2rem] p-4 md:p-8">
           <div
             className="rounded-[1.5rem] border px-4 py-5 md:px-8 md:py-7"
@@ -76,8 +122,32 @@ export default function FinalResultSection() {
               </div>
             </div>
           </div>
+
+          {/* 그래프 버튼 */}
+          <div className="mt-6 grid sm:grid-cols-3 gap-3">
+            {CHARTS.map((chart, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(chart)}
+                className="flex items-center gap-3 rounded-2xl px-5 py-4 text-left transition-all hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  background: `${chart.color}10`,
+                  border: `1px solid ${chart.color}30`,
+                }}
+              >
+                <span style={{ color: chart.color }}>{chart.icon}</span>
+                <div>
+                  <div className="font-semibold text-white text-base leading-snug">{chart.title}</div>
+                  <div className="text-sm mt-0.5" style={{ color: chart.color }}>{chart.sub}</div>
+                </div>
+                <span className="ml-auto text-slate-500 text-lg">↗</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
+
+      {active && <Modal chart={active} onClose={() => setActive(null)} />}
     </section>
   );
 }
