@@ -1,13 +1,13 @@
-import { TbBolt, TbBrain, TbScale, TbRefresh } from 'react-icons/tb';
+import { TbBolt, TbBrain, TbRefresh, TbTargetArrow, TbStack2 } from 'react-icons/tb';
 import { BiNetworkChart } from 'react-icons/bi';
 
 const models = [
   {
     name: 'XGBoost',
-    badge: '최종 선택',
+    badge: 'Recall 기준 충족',
     badgeColor: '#f472b6',
-    desc: '그래디언트 부스팅 기반 앙상블 모델. 불균형 데이터에 강하고, scale_pos_weight 파라미터로 소수 클래스(AF 양성) 가중치 조절 가능.',
-    pros: ['높은 예측 성능', '결측치에 강건', 'SHAP 연동 용이'],
+    desc: '소규모 데이터에서도 규제 기능을 통해 과적합을 억제하며 일반화된 성능을 기대할 수 있는 부스팅 계열 모델입니다.',
+    pros: ['규제 기반 일반화 성능', 'Recall 0.8039 달성', 'Optuna 튜닝 효과 확인'],
     color: '#f472b6',
     icon: <TbBolt size={24} />,
   },
@@ -15,26 +15,41 @@ const models = [
     name: 'LightGBM',
     badge: '비교 모델',
     badgeColor: '#60a5fa',
-    desc: '리프 중심 트리 성장 방식으로 대용량 데이터에서 빠른 학습. XGBoost와 앙상블 조합으로 최종 성능 향상에 기여.',
-    pros: ['빠른 학습 속도', '메모리 효율', '고차원 변수 처리'],
+    desc: 'XGBoost와 같은 부스팅 계열로, 규제 옵션을 활용해 작은 데이터셋에서도 안정적인 일반화 가능성을 비교하기 위해 함께 사용했습니다.',
+    pros: ['규제 기능 활용 가능', '부스팅 계열 비교 기준', 'AUROC 0.7966'],
     color: '#60a5fa',
     icon: <TbBrain size={24} />,
   },
   {
     name: 'Random Forest',
-    badge: '베이스라인',
+    badge: '과적합 방어용',
     badgeColor: '#34d399',
-    desc: '배깅 기반 앙상블 모델로 과적합에 강함. 베이스라인 성능 확인 및 변수 중요도 1차 검증에 활용.',
-    pros: ['과적합 방지', '변수 중요도 제공', '빠른 초기 검증'],
+    desc: '여러 트리의 평균을 내는 배깅 방식이라 특정 데이터 포인트에 덜 휘둘릴 수 있어, 약 1,500건 규모 데이터에서 과적합 가능성을 점검하는 데 적합했습니다.',
+    pros: ['트리 평균으로 안정성 확보', '소규모 데이터 대응', '베이스라인 비교 역할'],
     color: '#34d399',
     icon: <BiNetworkChart size={24} />,
   },
 ];
 
 const validations = [
-  { icon: <TbRefresh size={20} />, title: '5-Fold 교차 검증', desc: '과적합을 방지하고 일반화 성능을 보장하기 위해 stratified k-fold 사용', color: '#a78bfa' },
-  { icon: <TbScale size={20} />, title: 'SMOTE 오버샘플링', desc: 'AF 발생 클래스 불균형 해소. 소수 클래스의 합성 샘플 생성으로 모델 편향 방지', color: '#f472b6' },
-  { icon: <TbBolt size={20} />, title: 'Optuna 하이퍼파라미터 튜닝', desc: 'Tree-structured Parzen Estimator(TPE) 기반 자동 최적화로 최적 파라미터 탐색', color: '#60a5fa' },
+  {
+    icon: <TbStack2 size={20} />,
+    title: '데이터 규모 고려',
+    desc: '데이터 수가 약 1,500건 수준이라 복잡한 모델은 과적합 위험이 있다고 보고, 트리 기반 모델 중심으로 후보군을 좁혔습니다.',
+    color: '#a78bfa',
+  },
+  {
+    icon: <TbTargetArrow size={20} />,
+    title: '튜닝 목표 설정',
+    desc: 'Optuna를 적용해 AUROC 최적화를 목표로 하되, Recall은 0.8 이상을 만족하는 모델을 우선적으로 확인했습니다.',
+    color: '#f472b6',
+  },
+  {
+    icon: <TbRefresh size={20} />,
+    title: '탐색 범위',
+    desc: 'max_depth는 3~6, learning_rate는 0.01~0.1 범위에서 탐색했고, trial은 100~200회 수준으로 반복했습니다.',
+    color: '#60a5fa',
+  },
 ];
 
 export default function MethodSection() {
@@ -48,11 +63,11 @@ export default function MethodSection() {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             <span style={{ background: 'linear-gradient(135deg, #a78bfa, #60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              어떤 모델을 왜 썼나요?
+              모델을 어떻게 개발했나요?
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            클래스 불균형·임상 해석 가능성·예측 성능을 모두 고려한 모델 선택
+            소규모 데이터셋에서 과적합 가능성을 고려해 트리 기반 모델들을 비교하고 Optuna로 하이퍼파라미터를 조정했습니다
           </p>
         </div>
 
@@ -86,7 +101,7 @@ export default function MethodSection() {
         <div className="glass rounded-3xl p-8">
           <div className="font-bold text-white mb-7 flex items-center gap-2">
             <TbRefresh size={18} style={{ color: '#a78bfa' }} />
-            검증 전략
+            모델 개발 기준
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
             {validations.map((v, i) => (
@@ -101,6 +116,14 @@ export default function MethodSection() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-slate-800">
+            <p className="text-sm text-slate-400 leading-relaxed">
+              최종적으로는 <strong className="text-white">AUROC 최적화</strong>와
+              <strong className="text-white"> Recall 0.8 이상</strong>이라는 두 기준을 함께 놓고 비교했고,
+              그 결과 XGBoost가 Recall 0.8039로 목표 조건을 만족해 최종 결과 요약에서 체크된 모델로 제시되었습니다.
+            </p>
           </div>
         </div>
       </div>

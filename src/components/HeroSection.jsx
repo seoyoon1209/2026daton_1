@@ -53,9 +53,9 @@ export default function HeroSection() {
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 text-sm">
           <RiSignalTowerLine size={14} style={{ color: '#34d399' }} />
-          <span className="text-slate-300">MADE 데이터톤 2026</span>
+          <span className="text-slate-300">2026 데이터톤</span>
           <span className="text-slate-500">·</span>
-          <span className="gradient-text font-semibold">INSPIRE Dataset</span>
+          <span className="gradient-text font-semibold">7조 MADE</span>
         </div>
 
         <h1 className="text-6xl md:text-8xl font-bold leading-tight mb-6">
@@ -79,19 +79,13 @@ export default function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={() => document.getElementById('demo').scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('final-result').scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-4 rounded-2xl font-semibold text-lg text-white transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
             style={{ background: 'linear-gradient(135deg, #be185d, #7c3aed)', boxShadow: '0 0 40px rgba(190,24,93,0.3)' }}
           >
             <TbHeartbeat size={20} />
-            환자 예측 체험
+            최종 결과 보기
             <HiOutlineChevronRight size={18} />
-          </button>
-          <button
-            onClick={() => document.getElementById('performance').scrollIntoView({ behavior: 'smooth' })}
-            className="glass glass-hover px-8 py-4 rounded-2xl font-semibold text-lg text-slate-300"
-          >
-            모델 성능 보기
           </button>
         </div>
       </div>

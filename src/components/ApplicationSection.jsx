@@ -6,7 +6,7 @@ const scenarios = [
   {
     icon: <MdOutlineMonitorHeart size={30} />,
     title: '수술 중 실시간 모니터링',
-    desc: '마취과 모니터에 AF 위험도 게이지를 연동합니다. 위험도가 임계값을 넘는 순간 마취과 의사에게 즉시 알림이 전송됩니다.',
+    desc: '마취과 모니터에 AF 위험도 게이지를 연동합니다. 수술 중 실시간으로 AF 위험도 변화를 확인할 수 있습니다.',
     tag: '즉각 적용 가능',
     tagColor: '#34d399',
     color: '#f472b6',
@@ -98,7 +98,7 @@ export default function ApplicationSection() {
               <TbHeartbeat size={18} style={{ color: '#f472b6', marginTop: 2, flexShrink: 0 }} />
               <p className="text-sm text-slate-400 leading-relaxed">
                 본 모델은 의료진의 임상 판단을 <strong className="text-white">대체하는 것이 아니라 보조</strong>하는 도구입니다.
-                SHAP·LIME 기반 설명 가능성을 통해 의료진이 예측 근거를 이해하고 최종 결정에 활용할 수 있도록 설계되었습니다.
+                SHAP 기반 설명 가능성을 통해 의료진이 예측 근거를 이해하고 최종 결정에 활용할 수 있도록 설계되었습니다.
               </p>
             </div>
           </div>

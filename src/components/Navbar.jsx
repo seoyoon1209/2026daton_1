@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { TbHeartbeat } from 'react-icons/tb';
-import { HiOutlineChevronRight } from 'react-icons/hi';
 
 const NAV = [
   { label: '배경', id: 'background' },
   { label: '데이터', id: 'data' },
   { label: '기법', id: 'method' },
-  { label: '결과', id: 'performance' },
   { label: '임상 해석', id: 'clinical' },
   { label: '활용', id: 'application' },
+  { label: '최종 결과', id: 'final-result' },
 ];
 
 export default function Navbar() {
@@ -45,11 +44,6 @@ export default function Navbar() {
               {n.label}
             </button>
           ))}
-          <button onClick={() => scrollTo('demo')}
-            className="px-4 py-2 rounded-xl text-sm font-semibold text-white transition-all hover:scale-105 flex items-center gap-1"
-            style={{ background: 'linear-gradient(135deg, #be185d, #7c3aed)' }}>
-            예측 데모 <HiOutlineChevronRight size={14} />
-          </button>
         </div>
 
         {/* mobile menu btn */}
@@ -68,11 +62,6 @@ export default function Navbar() {
                 {n.label}
               </button>
             ))}
-            <button onClick={() => scrollTo('demo')}
-              className="mt-2 py-2 rounded-xl text-sm font-semibold text-white text-center"
-              style={{ background: 'linear-gradient(135deg, #be185d, #7c3aed)' }}>
-              예측 데모
-            </button>
           </div>
         </div>
       )}

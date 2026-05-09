@@ -4,10 +4,9 @@ import HeroSection from './components/HeroSection';
 import BackgroundSection from './components/BackgroundSection';
 import DataSection from './components/DataSection';
 import MethodSection from './components/MethodSection';
-import PerformanceSection from './components/PerformanceSection';
 import ClinicalSection from './components/ClinicalSection';
 import ApplicationSection from './components/ApplicationSection';
-import DemoSection from './components/DemoSection';
+import FinalResultSection from './components/FinalResultSection';
 import { TbHeartbeat } from 'react-icons/tb';
 
 function App() {
@@ -18,17 +17,16 @@ function App() {
       <BackgroundSection />
       <DataSection />
       <MethodSection />
-      <PerformanceSection />
       <ClinicalSection />
       <ApplicationSection />
-      <DemoSection />
+      <FinalResultSection />
       <footer className="py-12 text-center text-slate-600 text-sm border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-center gap-2 mb-2">
             <TbHeartbeat size={18} style={{ color: '#f472b6' }} />
             <span className="font-medium text-slate-400">MADE Dataton 2026</span>
           </div>
-          <p>INSPIRE Dataset · 심방세동(AF) 발생 예측 AI · SHAP · LIME · XGBoost</p>
+          <p>INSPIRE Dataset · 심방세동(AF) 발생 예측 AI · SHAP · XGBoost · LightGBM</p>
         </div>
       </footer>
     </div>

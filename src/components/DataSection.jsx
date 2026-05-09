@@ -1,20 +1,12 @@
-import { TbDatabase, TbTable, TbFilter, TbVariable, TbArrowsExchange } from 'react-icons/tb';
+import { TbDatabase, TbTable, TbFilter, TbArrowsExchange } from 'react-icons/tb';
 import { RiFlowChart } from 'react-icons/ri';
 import { MdOutlineBalance } from 'react-icons/md';
+import { datasetSummary } from '../data/poafResults';
 
-// TODO: 실제 사용한 테이블·변수·케이스 수로 교체하세요
 const tables = [
-  { name: 'operations',  desc: '수술 기본 정보 (수술 종류, 마취 방법, 수술 시간 등)', rows: '대상 케이스', color: '#a78bfa' },
-  { name: 'vitalsign',   desc: '수술 중 생체신호 (HR, SpO₂, BP, EtCO₂, CVP 등)',    rows: '시계열 다수',  color: '#60a5fa' },
-  { name: 'labs',        desc: '수술 전 검사 결과 (전해질, CBC 등)',                   rows: '다수 항목',   color: '#34d399' },
-  { name: 'patients',    desc: '환자 기본 정보 (나이, 성별, BMI, 기저질환 등)',          rows: '흉부외과 환자', color: '#f472b6' },
-];
-
-const keyFeatures = [
-  '나이 (Age)', 'BMI', '수술 시간 (an_duration)', 'HR 평균/변동성',
-  'SpO₂ 최솟값', '수축기 혈압', 'EtCO₂ 평균/최솟값/표준편차',
-  'doubi_max', 'nepi_max', 'cpb_duration', 'CVP 존재 여부 (0/1)',
-  '마취 방법', 'CPB 시행 여부', '수술 종류',
+  { name: 'labs', desc: '수술 전 검사 수치 (PT-INR, Cr, Hb, Albumin 등)', rows: '핵심 7개 변수', color: '#60a5fa' },
+  { name: 'vitals', desc: '수술 중 생체신호 요약치 (HR, SpO2, EtCO2, MBP)', rows: '요약 통계 기반', color: '#34d399' },
+  { name: 'operations', desc: '환자 기본 정보와 수술 식별자, 수술 시간, 마취 시간, CPB 여부/시간, 출혈량', rows: `${datasetSummary.features}개 입력 변수`, color: '#f472b6' },
 ];
 
 export default function DataSection() {
@@ -32,7 +24,9 @@ export default function DataSection() {
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            서울대학교병원 수술실 빅데이터 <strong className="text-white">INSPIRE</strong> — 흉부외과 환자 대상 다변량 임상 데이터
+            서울대학교병원 수술실 빅데이터 <strong className="text-white">INSPIRE</strong> 기반
+            <br />
+            최종 분석셋 <strong className="text-white">{datasetSummary.cases.toLocaleString()}명</strong>, 입력 변수 <strong className="text-white">{datasetSummary.features}개</strong>
           </p>
         </div>
 
@@ -94,8 +88,10 @@ export default function DataSection() {
               <div className="flex-1 rounded-2xl p-5"
                 style={{ background: 'rgba(167,139,250,0.06)', border: '1px solid rgba(167,139,250,0.15)' }}>
                 <div className="text-xs text-slate-500 mb-2">POAF 발생 (양성, 1)</div>
-                <div className="text-2xl font-bold mb-1" style={{ color: '#a78bfa' }}>전체 유지</div>
-                <div className="text-xs text-slate-400">AF 발생 환자 케이스 전수 포함</div>
+                <div className="text-2xl font-bold mb-1" style={{ color: '#a78bfa' }}>
+                  {datasetSummary.positiveCases.toLocaleString()}건
+                </div>
+                <div className="text-xs text-slate-400">전체의 {datasetSummary.positiveRate}%</div>
               </div>
               <div className="flex items-center justify-center text-slate-600 shrink-0">
                 <TbArrowsExchange size={22} />
@@ -103,10 +99,12 @@ export default function DataSection() {
               <div className="flex-1 rounded-2xl p-5"
                 style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.15)' }}>
                 <div className="text-xs text-slate-500 mb-2">No POAF (음성, 0)</div>
-                <div className="text-2xl font-bold mb-1" style={{ color: '#60a5fa' }}>다운샘플링</div>
+                <div className="text-2xl font-bold mb-1" style={{ color: '#60a5fa' }}>
+                  {datasetSummary.negativeCases.toLocaleString()}건
+                </div>
                 <div className="text-xs text-slate-400 leading-relaxed">
-                  CPB 시행(1) : CPB 미시행(0) = <strong className="text-white">4 : 6</strong> 비율로<br />
-                  CPB 미시행 케이스를 줄여 클래스 균형 조정
+                  최종 클래스 비율은 <strong className="text-white">5.2 : 1</strong>이며<br />
+                  모델 단계에서 class weight와 threshold tuning으로 불균형을 보정
                 </div>
               </div>
             </div>
@@ -200,23 +198,6 @@ export default function DataSection() {
           </div>
         </div>
 
-        {/* 최종 입력 변수 */}
-        <div>
-          <div className="flex items-center gap-2 mb-5">
-            <TbVariable size={18} style={{ color: '#34d399' }} />
-            <span className="font-semibold text-white">최종 입력 변수
-              <span className="text-slate-500 font-normal text-sm ml-1">({keyFeatures.length}개)</span>
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {keyFeatures.map((f, i) => (
-              <span key={i} className="glass px-4 py-2 rounded-full text-sm text-slate-300"
-                style={{ border: '1px solid rgba(96,165,250,0.2)' }}>
-                {f}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
