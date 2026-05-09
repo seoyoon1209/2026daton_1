@@ -2,7 +2,7 @@
   "name": "dataton",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://seoyoon1209.github.io/2026daton_pr",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",

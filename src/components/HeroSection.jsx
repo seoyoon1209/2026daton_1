@@ -70,7 +70,7 @@ export default function HeroSection() {
         </div>
 
         <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          수술 전·후 수집된 생체 데이터를 바탕으로<br />
+          수술 전·중 수집된 생체 데이터를 바탕으로<br />
           <strong className="text-white">심방세동(Atrial Fibrillation) 발생 여부</strong>를 예측하고<br />
           예측에 영향을 준 변수를 설명합니다
         </p>
