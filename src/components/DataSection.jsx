@@ -14,7 +14,7 @@ export default function DataSection() {
     <section id="data" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-sm text-slate-400">
+          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-base text-slate-400">
             <TbDatabase size={14} style={{ color: '#60a5fa' }} />
             데이터 소개
           </div>
@@ -41,9 +41,9 @@ export default function DataSection() {
               <div key={i} className="glass glass-hover rounded-2xl p-5 flex gap-4">
                 <div className="w-1 rounded-full shrink-0 self-stretch" style={{ background: t.color }} />
                 <div>
-                  <div className="font-mono text-sm font-bold mb-1" style={{ color: t.color }}>{t.name}</div>
-                  <div className="text-slate-300 text-sm mb-1">{t.desc}</div>
-                  <div className="text-xs text-slate-500">{t.rows}</div>
+                  <div className="font-mono text-base font-bold mb-1" style={{ color: t.color }}>{t.name}</div>
+                  <div className="text-slate-300 text-base mb-1">{t.desc}</div>
+                  <div className="text-sm text-slate-500">{t.rows}</div>
                 </div>
               </div>
             ))}
@@ -66,7 +66,7 @@ export default function DataSection() {
               ].map((r, i) => (
                 <div key={i} className="flex items-center gap-3 rounded-2xl p-4"
                   style={{ background: 'rgba(244,114,182,0.06)', border: '1px solid rgba(244,114,182,0.15)' }}>
-                  <div className="text-xs font-mono px-2 py-1 rounded-lg shrink-0"
+                  <div className="text-sm font-mono px-2 py-1 rounded-lg shrink-0"
                     style={{ background: 'rgba(244,114,182,0.15)', color: '#f472b6' }}>{r.label}</div>
                   <span className="text-sm text-slate-300">{r.rule}</span>
                 </div>
@@ -79,7 +79,7 @@ export default function DataSection() {
             <div className="flex items-center gap-2 mb-5">
               <MdOutlineBalance size={18} style={{ color: '#a78bfa' }} />
               <span className="font-semibold text-white">STEP 2 · 클래스 불균형 처리</span>
-              <span className="text-xs px-2 py-0.5 rounded-full ml-1"
+              <span className="text-sm px-2 py-0.5 rounded-full ml-1"
                 style={{ background: 'rgba(167,139,250,0.15)', color: '#a78bfa', border: '1px solid rgba(167,139,250,0.3)' }}>
                 SMOTE 미사용
               </span>
@@ -87,22 +87,22 @@ export default function DataSection() {
             <div className="flex flex-col sm:flex-row items-stretch gap-4">
               <div className="flex-1 rounded-2xl p-5"
                 style={{ background: 'rgba(167,139,250,0.06)', border: '1px solid rgba(167,139,250,0.15)' }}>
-                <div className="text-xs text-slate-500 mb-2">POAF 발생 (양성, 1)</div>
+                <div className="text-sm text-slate-500 mb-2">POAF 발생 (양성, 1)</div>
                 <div className="text-2xl font-bold mb-1" style={{ color: '#a78bfa' }}>
                   {datasetSummary.positiveCases.toLocaleString()}건
                 </div>
-                <div className="text-xs text-slate-400">전체의 {datasetSummary.positiveRate}%</div>
+                <div className="text-sm text-slate-400">전체의 {datasetSummary.positiveRate}%</div>
               </div>
               <div className="flex items-center justify-center text-slate-600 shrink-0">
                 <TbArrowsExchange size={22} />
               </div>
               <div className="flex-1 rounded-2xl p-5"
                 style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.15)' }}>
-                <div className="text-xs text-slate-500 mb-2">No POAF (음성, 0)</div>
+                <div className="text-sm text-slate-500 mb-2">No POAF (음성, 0)</div>
                 <div className="text-2xl font-bold mb-1" style={{ color: '#60a5fa' }}>
                   {datasetSummary.negativeCases.toLocaleString()}건
                 </div>
-                <div className="text-xs text-slate-400 leading-relaxed">
+                <div className="text-sm text-slate-400 leading-relaxed">
                   최종 클래스 비율은 <strong className="text-white">5.2 : 1</strong>이며<br />
                   모델 단계에서 class weight와 threshold tuning으로 불균형을 보정
                 </div>
@@ -124,8 +124,8 @@ export default function DataSection() {
               ].map((r, i) => (
                 <div key={i} className="rounded-2xl p-4"
                   style={{ background: 'rgba(251,146,60,0.06)', border: '1px solid rgba(251,146,60,0.15)' }}>
-                  <div className="font-mono text-xs font-bold mb-2" style={{ color: '#fb923c' }}>{r.var}</div>
-                  <div className="text-xs text-slate-400 leading-relaxed">{r.rule}</div>
+                  <div className="font-mono text-base font-bold mb-2" style={{ color: '#fb923c' }}>{r.var}</div>
+                  <div className="text-sm text-slate-400 leading-relaxed">{r.rule}</div>
                 </div>
               ))}
             </div>
@@ -143,13 +143,13 @@ export default function DataSection() {
               <div className="rounded-2xl p-4"
                 style={{ background: 'rgba(52,211,153,0.06)', border: '1px solid rgba(52,211,153,0.2)' }}>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-bold px-2 py-0.5 rounded-md"
+                  <span className="text-sm font-bold px-2 py-0.5 rounded-md"
                     style={{ background: 'rgba(52,211,153,0.2)', color: '#34d399' }}>0으로 대체</span>
-                  <span className="text-xs text-slate-500">결측 = 해당 약물/처치 미시행으로 해석</span>
+                  <span className="text-sm text-slate-500">결측 = 해당 약물/처치 미시행으로 해석</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {['doubi_max', 'nepi_max', 'cpb_duration'].map(v => (
-                    <span key={v} className="font-mono text-xs px-3 py-1 rounded-lg text-white"
+                    <span key={v} className="font-mono text-base px-3 py-1 rounded-lg text-white"
                       style={{ background: 'rgba(52,211,153,0.12)', border: '1px solid rgba(52,211,153,0.25)' }}>
                       {v}
                     </span>
@@ -161,19 +161,19 @@ export default function DataSection() {
               <div className="rounded-2xl p-4"
                 style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.2)' }}>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-bold px-2 py-0.5 rounded-md"
+                  <span className="text-sm font-bold px-2 py-0.5 rounded-md"
                     style={{ background: 'rgba(96,165,250,0.2)', color: '#60a5fa' }}>범주형 변환 (0 / 1)</span>
-                  <span className="text-xs text-slate-500">측정값 존재 여부 자체를 임상 정보로 활용</span>
+                  <span className="text-sm text-slate-500">측정값 존재 여부 자체를 임상 정보로 활용</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {['cvp_min', 'cvp_mean'].map(v => (
-                    <span key={v} className="font-mono text-xs px-3 py-1 rounded-lg text-white"
+                    <span key={v} className="font-mono text-base px-3 py-1 rounded-lg text-white"
                       style={{ background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.25)' }}>
                       {v}
                     </span>
                   ))}
                 </div>
-                <div className="text-xs text-slate-400 leading-relaxed">
+                <div className="text-sm text-slate-400 leading-relaxed">
                   두 컬럼을 <strong className="text-white">하나의 범주형 컬럼</strong>으로 통합 —
                   값이 하나라도 존재하면 <span style={{ color: '#60a5fa' }}>1</span>,
                   모두 결측이면 <span style={{ color: '#60a5fa' }}>0</span>
@@ -184,11 +184,11 @@ export default function DataSection() {
               <div className="rounded-2xl p-4"
                 style={{ background: 'rgba(251,146,60,0.06)', border: '1px solid rgba(251,146,60,0.2)' }}>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-bold px-2 py-0.5 rounded-md"
+                  <span className="text-sm font-bold px-2 py-0.5 rounded-md"
                     style={{ background: 'rgba(251,146,60,0.2)', color: '#fb923c' }}>해당 행 제거</span>
-                  <span className="text-xs text-slate-500">위 3개 규칙 외 나머지 컬럼</span>
+                  <span className="text-sm text-slate-500">위 3개 규칙 외 나머지 컬럼</span>
                 </div>
-                <div className="text-xs text-slate-400 leading-relaxed">
+                <div className="text-sm text-slate-400 leading-relaxed">
                   doubi_max · nepi_max · cpb_duration · cvp 관련 컬럼을 제외한
                   나머지 변수에서 결측치가 발생한 경우 <strong className="text-white">해당 행 전체를 제거</strong>
                 </div>

@@ -57,7 +57,7 @@ export default function MethodSection() {
     <section id="method" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-sm text-slate-400">
+          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-base text-slate-400">
             <TbBrain size={14} style={{ color: '#a78bfa' }} />
             분석 기법 소개
           </div>
@@ -77,16 +77,16 @@ export default function MethodSection() {
             <div key={i} className="glass glass-hover rounded-3xl p-7 flex flex-col">
               <div className="flex items-start justify-between mb-4">
                 <div style={{ color: m.color }}>{m.icon}</div>
-                <span className="text-xs font-semibold px-3 py-1 rounded-full"
+                <span className="text-sm font-semibold px-3 py-1 rounded-full"
                   style={{ background: `${m.badgeColor}18`, color: m.badgeColor, border: `1px solid ${m.badgeColor}44` }}>
                   {m.badge}
                 </span>
               </div>
               <div className="text-xl font-bold text-white mb-3">{m.name}</div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">{m.desc}</p>
+              <p className="text-slate-400 text-base leading-relaxed mb-5 flex-1">{m.desc}</p>
               <div className="space-y-1.5">
                 {m.pros.map((p, j) => (
-                  <div key={j} className="flex items-center gap-2 text-xs text-slate-300">
+                  <div key={j} className="flex items-center gap-2 text-base text-slate-300">
                     <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: m.color }} />
                     {p}
                   </div>
@@ -111,8 +111,8 @@ export default function MethodSection() {
                   {v.icon}
                 </div>
                 <div>
-                  <div className="font-semibold text-white text-sm mb-1">{v.title}</div>
-                  <div className="text-xs text-slate-400 leading-relaxed">{v.desc}</div>
+                  <div className="font-semibold text-white text-base mb-1">{v.title}</div>
+                  <div className="text-sm text-slate-400 leading-relaxed">{v.desc}</div>
                 </div>
               </div>
             ))}

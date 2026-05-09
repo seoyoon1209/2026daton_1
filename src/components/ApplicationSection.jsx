@@ -48,7 +48,7 @@ export default function ApplicationSection() {
     <section id="application" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-sm text-slate-400">
+          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-base text-slate-400">
             <MdOutlineLocalHospital size={14} style={{ color: '#34d399' }} />
             활용 가능성
           </div>
@@ -67,13 +67,13 @@ export default function ApplicationSection() {
             <div key={i} className="glass glass-hover rounded-3xl p-7">
               <div className="flex items-start justify-between mb-4">
                 <div style={{ color: s.color }}>{s.icon}</div>
-                <span className="text-xs font-semibold px-3 py-1 rounded-full"
+                <span className="text-sm font-semibold px-3 py-1 rounded-full"
                   style={{ background: `${s.tagColor}18`, color: s.tagColor, border: `1px solid ${s.tagColor}44` }}>
                   {s.tag}
                 </span>
               </div>
               <h3 className="text-lg font-bold text-white mb-3">{s.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+              <p className="text-slate-400 text-base leading-relaxed">{s.desc}</p>
               <div className="mt-5 h-px rounded-full" style={{ background: `linear-gradient(90deg, ${s.color}, transparent)` }} />
             </div>
           ))}

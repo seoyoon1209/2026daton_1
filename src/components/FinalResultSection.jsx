@@ -14,13 +14,13 @@ export default function FinalResultSection() {
     <section id="final-result" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-sm text-slate-400">
+          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-base text-slate-400">
             <TbTrophy size={14} style={{ color: '#f59e0b' }} />
             모델 성능 비교
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span style={{ background: 'linear-gradient(135deg, #f59e0b, #f472b6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              최종 결과 요약
+              어떻게 성능이 나왔나요?
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -38,7 +38,7 @@ export default function FinalResultSection() {
           >
             <div className="font-mono text-slate-300">
               <div className="text-xl md:text-3xl leading-snug">
-                <span className="font-semibold text-white">최종 결과 요약</span>
+                <span className="font-semibold text-white">성능 지표</span>
                 <span className="ml-2 text-slate-400">(Optuna 튜닝 / 목표 Recall ≥ 0.8)</span>
               </div>
 
@@ -63,12 +63,12 @@ export default function FinalResultSection() {
                     {finalResultRows.map((row) => (
                       <tr key={row.metric}>
                         <td className="py-1 pr-6 text-white/90">{row.metric}</td>
-                        <td className="py-1 pr-6">{row.lightgbm}</td>
-                        <td className="py-1 pr-6">
-                          <span className={row.highlight === 'xgboost' ? 'text-white' : ''}>{row.xgboost}</span>
-                          {row.highlight === 'xgboost' ? <span className="ml-3 text-white">✓</span> : null}
-                        </td>
-                        <td className="py-1">{row.randomForest}</td>
+                        {['lightgbm', 'xgboost', 'randomForest'].map((model, i) => (
+                          <td key={model} className={`py-1 ${i < 2 ? 'pr-6' : ''}`}>
+                            <span className={row.highlight === model ? 'text-white' : ''}>{row[model]}</span>
+                            {row.highlight === model ? <span className="ml-3 text-white">✓</span> : null}
+                          </td>
+                        ))}
                       </tr>
                     ))}
                   </tbody>

@@ -53,12 +53,9 @@ export const modelMetrics = {
 };
 
 export const finalResultRows = [
-  { metric: 'AUROC', lightgbm: '0.7966', xgboost: '0.7822', randomForest: '0.7916' },
-  { metric: 'AUPRC', lightgbm: '0.4776', xgboost: '0.4564', randomForest: '0.4962' },
-  { metric: 'F1', lightgbm: '0.3980', xgboost: '0.4039', randomForest: '0.4103' },
-  { metric: 'Recall', lightgbm: '0.7843', xgboost: '0.8039', randomForest: '0.7843', highlight: 'xgboost' },
-  { metric: 'Precision', lightgbm: '0.2667', xgboost: '0.2697', randomForest: '0.2778' },
-  { metric: 'Threshold', lightgbm: '0.2500', xgboost: '0.2200', randomForest: '0.4400' },
+  { metric: 'AUROC',     lightgbm: '0.7966', xgboost: '0.7822', randomForest: '0.7916', highlight: 'lightgbm' },
+  { metric: 'Recall',    lightgbm: '0.7843', xgboost: '0.8039', randomForest: '0.7843', highlight: 'xgboost' },
+  { metric: 'Precision', lightgbm: '0.2667', xgboost: '0.2697', randomForest: '0.2778', highlight: 'randomForest' },
 ];
 
 export const topClinicalSignals = [

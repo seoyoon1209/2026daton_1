@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { TbHeartbeat } from 'react-icons/tb';
-import { HiOutlineChevronRight } from 'react-icons/hi';
 import { RiSignalTowerLine } from 'react-icons/ri';
 
 const texts = [
   "심방세동 발생 예측",
   "환자별 위험 변수 분석",
-  "SHAP · LIME 기반 설명",
+  "SHAP 기반 설명",
   "임상 의사결정 지원",
 ];
 
@@ -51,7 +49,7 @@ export default function HeroSection() {
         }} />
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 text-sm">
+        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 text-base">
           <RiSignalTowerLine size={14} style={{ color: '#34d399' }} />
           <span className="text-slate-300">2026 데이터톤</span>
           <span className="text-slate-500">·</span>
@@ -72,26 +70,15 @@ export default function HeroSection() {
         </div>
 
         <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          수술 중 수집된 생체 데이터를 바탕으로<br />
+          수술 전·후 수집된 생체 데이터를 바탕으로<br />
           <strong className="text-white">심방세동(Atrial Fibrillation) 발생 여부</strong>를 예측하고<br />
           예측에 영향을 준 변수를 설명합니다
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={() => document.getElementById('final-result').scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 rounded-2xl font-semibold text-lg text-white transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
-            style={{ background: 'linear-gradient(135deg, #be185d, #7c3aed)', boxShadow: '0 0 40px rgba(190,24,93,0.3)' }}
-          >
-            <TbHeartbeat size={20} />
-            최종 결과 보기
-            <HiOutlineChevronRight size={18} />
-          </button>
-        </div>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-        <span className="text-xs text-slate-500 tracking-widest uppercase">scroll</span>
+        <span className="text-sm text-slate-500 tracking-widest uppercase">scroll</span>
         <div className="w-px h-12 bg-gradient-to-b from-slate-500 to-transparent" />
       </div>
     </section>

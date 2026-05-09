@@ -17,9 +17,9 @@ function App() {
       <BackgroundSection />
       <DataSection />
       <MethodSection />
+      <FinalResultSection />
       <ClinicalSection />
       <ApplicationSection />
-      <FinalResultSection />
       <footer className="py-12 text-center text-slate-600 text-sm border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-center gap-2 mb-2">

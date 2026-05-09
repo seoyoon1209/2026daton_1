@@ -5,9 +5,9 @@ const NAV = [
   { label: '배경', id: 'background' },
   { label: '데이터', id: 'data' },
   { label: '기법', id: 'method' },
+  { label: '성능 지표', id: 'final-result' },
   { label: '임상 해석', id: 'clinical' },
   { label: '활용', id: 'application' },
-  { label: '최종 결과', id: 'final-result' },
 ];
 
 export default function Navbar() {

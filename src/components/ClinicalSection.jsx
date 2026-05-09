@@ -66,7 +66,7 @@ function ModelTable({ model }) {
         <div className="overflow-x-auto">
           <table className="w-full border-separate border-spacing-y-3">
             <thead>
-              <tr className="text-left text-sm md:text-lg text-slate-300">
+              <tr className="text-left text-base md:text-lg text-slate-300">
                 <th className="pb-3 font-normal w-[8%] pr-4 whitespace-nowrap">순위</th>
                 <th className="pb-3 font-normal w-[46%] pl-16 pr-4">피처</th>
                 <th className="pb-3 font-normal w-[46%] pr-4">SHAP</th>
@@ -99,7 +99,7 @@ export default function ClinicalSection() {
     <section id="clinical" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-sm text-slate-400">
+          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-base text-slate-400">
             <TbStethoscope size={14} style={{ color: '#f472b6' }} />
             모델별 변수 해석
           </div>
@@ -110,7 +110,7 @@ export default function ClinicalSection() {
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             각 모델의 상위 변수와 SHAP 값을 같은 형식의 표로 비교합니다.<br />
-            <span className="text-slate-500 text-sm">버튼을 눌러 모델별 표를 전환하세요</span>
+            <span className="text-slate-500 text-base">버튼을 눌러 모델별 표를 전환하세요</span>
           </p>
         </div>
 
@@ -122,7 +122,7 @@ export default function ClinicalSection() {
                   <button
                     key={key}
                     onClick={() => setTab(key)}
-                    className="px-3 py-2 rounded-xl text-sm font-semibold transition-all"
+                    className="px-3 py-2 rounded-xl text-base font-semibold transition-all"
                     style={tab === key
                       ? { background: 'linear-gradient(135deg, #be185d, #7c3aed)', color: '#fff' }
                       : { background: 'rgba(255,255,255,0.05)', color: '#94a3b8' }}
@@ -130,7 +130,7 @@ export default function ClinicalSection() {
                     모델 {idx + 1}
                   </button>
                 ))}
-                <div className="ml-auto flex items-center gap-1 text-xs text-slate-500">
+                <div className="ml-auto flex items-center gap-1 text-base text-slate-500">
                   <TbHeartbeat size={14} style={{ color: '#f472b6' }} />
                   AF = 1 기준
                 </div>
@@ -145,11 +145,11 @@ export default function ClinicalSection() {
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <TbChartBar size={18} style={{ color: '#a78bfa' }} />
-                <span className="font-bold text-white text-sm">모델 요약</span>
+                <span className="font-bold text-white text-base">모델 요약</span>
               </div>
               <div className="space-y-2">
                 {model.summary.map((item, i) => (
-                  <div key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                  <div key={i} className="flex items-start gap-2 text-base text-slate-300">
                     <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: '#f472b6' }} />
                     {item}
                   </div>
@@ -160,9 +160,9 @@ export default function ClinicalSection() {
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <HiOutlineSparkles size={16} style={{ color: '#34d399' }} />
-                <span className="font-bold text-white text-sm">표 해석</span>
+                <span className="font-bold text-white text-base">표 해석</span>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-400 text-base leading-relaxed">
                 순위, 피처, mean| SHAP |를 그대로 표시했습니다.
               </p>
             </div>
@@ -170,9 +170,9 @@ export default function ClinicalSection() {
             {/*<div className="glass rounded-2xl p-6">*/}
             {/*  <div className="flex items-center gap-2 mb-3">*/}
             {/*    <HiOutlineSparkles size={16} style={{ color: '#60a5fa' }} />*/}
-            {/*    <span className="font-bold text-white text-sm">모델 전환</span>*/}
+            {/*    <span className="font-bold text-white text-base">모델 전환</span>*/}
             {/*  </div>*/}
-            {/*  <p className="text-slate-400 text-sm leading-relaxed">*/}
+            {/*  <p className="text-slate-400 text-base leading-relaxed">*/}
             {/*    버튼을 누르면 모델 1, 모델 2, 모델 3 표가 전환됩니다.*/}
             {/*  </p>*/}
             {/*</div>*/}

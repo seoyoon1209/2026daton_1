@@ -34,7 +34,7 @@ export default function BackgroundSection() {
     <section id="background" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-sm text-slate-400">
+          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 text-base text-slate-400">
             <MdOutlineLocalHospital size={14} style={{ color: '#f472b6' }} />
             주제 설정 배경
           </div>
@@ -57,8 +57,8 @@ export default function BackgroundSection() {
             <div key={i} className="glass rounded-3xl p-6 text-center"
               style={{ border: `1px solid ${s.color}22`, background: `${s.color}08` }}>
               <div className="text-4xl font-bold mb-1" style={{ color: s.color }}>{s.value}</div>
-              <div className="text-slate-300 text-sm font-medium">{s.label}</div>
-              <div className="text-slate-500 text-xs mt-1">{s.sub}</div>
+              <div className="text-slate-300 text-base font-medium">{s.label}</div>
+              <div className="text-slate-500 text-base mt-1">{s.sub}</div>
             </div>
           ))}
         </div>
@@ -74,7 +74,7 @@ export default function BackgroundSection() {
               <div key={i} className="glass glass-hover rounded-3xl p-7">
                 <div className="mb-4" style={{ color: r.color }}>{r.icon}</div>
                 <h3 className="text-base font-bold text-white mb-2">{r.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{r.body}</p>
+                <p className="text-slate-400 text-base leading-relaxed">{r.body}</p>
                 <div className="mt-4 h-px w-10 rounded-full" style={{ background: r.color }} />
               </div>
             ))}
@@ -91,7 +91,7 @@ export default function BackgroundSection() {
             </div>
             <div>
               <div className="font-bold text-white mb-2">임상적 필요성 요약</div>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-400 text-base leading-relaxed">
                 흉부외과 수술 후 AF는 발생 시 뇌졸중, 혈역학적 불안정, 중환자실 재입실로 이어져
                 <strong className="text-white"> 사망률과 재원 기간을 유의하게 높입니다.</strong> 그러나 현재 임상에서는
                 발생 후 약물 전복 또는 전기 복율에 의존하는 수동적 대응이 대부분입니다.
