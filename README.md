@@ -17,7 +17,7 @@ INSPIRE 수술 전후(perioperative) 공개 데이터셋을 활용해 머신러�
 
 <br />
 
-## 📊 데이터셋
+##  데이터셋
 
 [INSPIRE — a publicly available research dataset for perioperative medicine](https://physionet.org/content/inspire/) 기반
 
@@ -33,7 +33,7 @@ INSPIRE 수술 전후(perioperative) 공개 데이터셋을 활용해 머신러�
 
 <br />
 
-## 🤖 모델 성능
+##  모델 성능
 
 여러 트리 기반 모델과 앙상블(Weighted Voting)을 비교했습니다.
 
@@ -47,7 +47,7 @@ INSPIRE 수술 전후(perioperative) 공개 데이터셋을 활용해 머신러�
 
 <br />
 
-## 🔍 주요 임상 신호 (SHAP)
+##  주요 임상 신호 (SHAP)
 
 | 변수 | 영향 방향 | 해석 |
 |------|:---------:|------|
@@ -59,7 +59,7 @@ INSPIRE 수술 전후(perioperative) 공개 데이터셋을 활용해 머신러�
 
 <br />
 
-## 🛠 기술 스택
+## 기술 스택
 
 - **Frontend**: React 19, Tailwind CSS
 - **ML**: LightGBM, XGBoost, RandomForest, Optuna(하이퍼파라미터 튜닝), SHAP
